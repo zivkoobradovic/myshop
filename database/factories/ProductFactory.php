@@ -24,14 +24,14 @@ class ProductFactory extends Factory
     {
         return [
             'store' => Store::factory(),
-            'sku' => $this->faker->randomNumber(10),
+            'sku' => $this->faker->randomNumber(),
             'name' => $this->faker->words(2),
-            'price'=> $this->numberBetween($min = 100, $max = 30000),
+            'price'=> $this->faker->numberBetween($min = 100, $max = 30000),
             'short_description' => $this->faker->paragraph,
             'long_description' => $this->faker->paragraphs,
             'in_stock' => $this->faker->boolean,
             'badge' => 'new',
-            'main_image' => $this->faker->image('https://source.unsplash.com/collection/4814656/',640,480, null, false),
+            'main_image' => $this->faker->image(),
         ];
     }
 }
