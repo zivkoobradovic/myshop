@@ -17,8 +17,8 @@ class CreateStoresTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('address');
-            $table->unsignedBigInteger('currency');
-            $table->unsignedBigInteger('tax');
+            $table->unsignedBigInteger('currency_id');
+            $table->unsignedBigInteger('tax_id');
             $table->timestamps();
         });
     }
