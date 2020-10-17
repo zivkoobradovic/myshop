@@ -23,7 +23,7 @@ class ProductFactory extends Factory
     public function definition()
     {
         return [
-            'store' => Store::factory(),
+            'store_id' => Store::factory(),
             'sku' => $this->faker->randomNumber(),
             'name' => $this->faker->words(2),
             'price'=> $this->faker->numberBetween($min = 100, $max = 30000),

@@ -13,4 +13,12 @@ class Store extends Model
     public function tax () {
         return $this->hasOne('App\Models\Tax', 'id', 'tax_id');
     }
+
+    public function currency () {
+        return $this->hasOne('App\models\Currency', 'id', 'currency_id');
+    }
+
+    public function products () {
+      return $this->belongsToMany('App\Models\Product');  
+    }
 }
