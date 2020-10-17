@@ -26,8 +26,8 @@ class StoreFactory extends Factory
         return [
             'name' => $this->faker->word,
             'address' => $this->faker->address,
-            'currency' => Currency::factory(),
-            'tax' => Tax::factory(),
+            'currency_id' => Currency::factory(),
+            'tax_id' => Tax::factory(),
         ];
     }
 }
