@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use App\Models\Store;
 use App\Models\ActiveStore;
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
 class ActiveStoreServiceProvider extends ServiceProvider

@@ -23,7 +23,7 @@ class CreateProductsTable extends Migration
             $table->text('long_description');
             $table->boolean('in_stock');
             $table->string('badge');
-            $table->string('main_image');
+            $table->string('image');
             $table->timestamps();
         });
     }

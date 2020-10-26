@@ -23,15 +23,16 @@ class ProductFactory extends Factory
     public function definition()
     {
         return [
+            'id' => $this->faker->numberBetween(1, 100),
             'store_id' => Store::factory(),
             'sku' => $this->faker->randomNumber(),
-            'name' => $this->faker->words(2),
-            'price'=> $this->faker->numberBetween($min = 100, $max = 30000),
+            'name' => $this->faker->word,
+            'price' => $this->faker->numberBetween($min = 100, $max = 30000),
             'short_description' => $this->faker->paragraph,
-            'long_description' => $this->faker->paragraphs,
+            'long_description' => $this->faker->paragraph,
             'in_stock' => $this->faker->boolean,
             'badge' => 'new',
-            'main_image' => $this->faker->image(),
+            'image' => 'https://source.unsplash.com/random',
         ];
     }
 }
