@@ -62,7 +62,7 @@
                     <option value="" selected>Select a Badge</option>
                     <option value="New">New</option>
                     <option value="Hot">Hot</option>
-                    <option value="Sale">New</option>
+                    <option value="Sale">Sale</option>
                 </select>
             </div>
         </div>

@@ -19,7 +19,7 @@ class CreateProductsTable extends Migration
             $table->integer('sku');
             $table->string('name');
             $table->integer('price');
-            $table->string('short_description');
+            $table->text('short_description');
             $table->text('long_description');
             $table->boolean('in_stock');
             $table->string('badge');
