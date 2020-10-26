@@ -5,6 +5,7 @@ namespace Tests\Feature;
 use Tests\TestCase;
 use App\Models\Product;
 use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class CrudProductTest extends TestCase
@@ -16,7 +17,7 @@ class CrudProductTest extends TestCase
     {
         $this->withoutExceptionHandling();
         $this->signIn(['admin' => true]);
-        $image = UploadedFile::fake()->image('avatar.jpg');
+        
         $product =[
             'id' => random_int(1,100),
             'store_id' => 1,
@@ -27,7 +28,7 @@ class CrudProductTest extends TestCase
             'long_description' => 'long',
             'in_stock' => 1,
             'badge' => 'new',
-            'image' => $image
+            'image' => $this->fakeImage()
         ];
         $response = $this->post('/products', $product);
         $productDb = Product::latest()->first();
@@ -60,6 +61,7 @@ class CrudProductTest extends TestCase
             'in_stock' => $product->in_stock,
             'short_description' => $product->short_description,
             'long_description' => $product->long_description,
+            'image' => $this->fakeImage()
         ]);
         $response->assertRedirect(route('product.show', ['product' => $product->id]));
         $updatedProduct = Product::find($product->id); 

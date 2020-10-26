@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 
 class ProductsController extends Controller
@@ -84,6 +85,7 @@ class ProductsController extends Controller
             $imageName = $attributes['image']->getClientOriginalName();
             if ($product->image != $imageName) {
                 $this->uploadImage($request, $imageName);
+               Storage::delete('/public/images/' . $product->image);
                 $attributes['image'] = $imageName;
             }
         }

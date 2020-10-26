@@ -84,7 +84,7 @@
                 </div>
 
                 <input
-            class="w-full rounded bg-white rounded border border-gray-400 focus:outline-none focus:border-teal-500 text-base px-4 py-2 mb-4" type="file" name="image" value="{{ $product->image }}">
+            class="w-full rounded bg-white rounded border border-gray-400 focus:outline-none focus:border-teal-500 text-base px-4 py-2 mb-4" type="file" name="image">
             </div>
         </div>
     </div>
