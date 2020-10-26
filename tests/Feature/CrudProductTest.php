@@ -60,7 +60,6 @@ class CrudProductTest extends TestCase
             'in_stock' => $product->in_stock,
             'short_description' => $product->short_description,
             'long_description' => $product->long_description,
-            'image' => $product->image
         ]);
         $response->assertRedirect(route('product.show', ['product' => $product->id]));
         $updatedProduct = Product::find($product->id); 

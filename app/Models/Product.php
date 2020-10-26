@@ -12,7 +12,7 @@ class Product extends Model
   protected $guarded = [];
 
     public function stores () {
-      return $this->belongsToMany('App\Models\Store');  
+      return $this->belongsTo('App\Models\Store');  
     }
 
     public function path () {

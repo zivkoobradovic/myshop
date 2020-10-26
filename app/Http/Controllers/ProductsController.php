@@ -40,7 +40,8 @@ class ProductsController extends Controller
     {
         $validateRequest = $this->requestValidate();
         $imageName = request()->file('image')->getClientOriginalName();
-        $request->file('image')->storeAs('images', $imageName, 'public');
+        $this->uploadImage($request, $imageName);
+        /*  $request->file('image')->storeAs('images', $imageName, 'public'); */
         $validateRequest['image'] = $imageName;
         $product = Product::create($validateRequest);
         return redirect($product->path());
@@ -77,8 +78,16 @@ class ProductsController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        $this->requestValidate();
-        $product->update($request->all());
+
+        $attributes = $this->requestValidate();
+        if ($request->has('image')) {
+            $imageName = $attributes['image']->getClientOriginalName();
+            if ($product->image != $imageName) {
+                $this->uploadImage($request, $imageName);
+                $attributes['image'] = $imageName;
+            }
+        }
+        $product->update($attributes);
         return redirect($product->path());
     }
 
@@ -95,7 +104,7 @@ class ProductsController extends Controller
 
     public function requestValidate()
     {
-         return request()->validate([
+        return request()->validate([
             'name' => 'required',
             'sku' => 'required',
             'badge' => 'required',
@@ -104,7 +113,11 @@ class ProductsController extends Controller
             'in_stock' => 'required',
             'short_description' => 'required',
             'long_description' => 'required',
-            'image' => 'required'
+            'image' => 'required|sometimes'
         ]);
+    }
+    public function uploadImage($request, $imageName)
+    {
+        $request->file('image')->storeAs('images', $imageName, 'public');
     }
 }

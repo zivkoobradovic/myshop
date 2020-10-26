@@ -25,7 +25,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        View::composer('products.create', function ($view) {
+        View::composer(['products.create', 'products.edit'], function ($view) {
             $view->with('stores', Store::all());
         });
     }

@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
-@foreach ($products as $product)
-    {{ $product->name }}
+@section('content')
+@foreach($products as $product)
+    {{ $product->name }} <br>
 @endforeach
+@endsection
