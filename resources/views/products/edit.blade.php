@@ -78,7 +78,7 @@
                             Hot</option>
                         <option value="Sale"
                             {{ $product->badge == 'Sale' ? 'selected' : '' }}>
-                            New</option>
+                            Sale</option>
 
                     </select>
                 </div>
