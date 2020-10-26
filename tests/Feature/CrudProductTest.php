@@ -47,7 +47,7 @@ class CrudProductTest extends TestCase
     }
 
     /** @test */
-    public function only_admins_can_update_product () 
+    public function only_admins_can_update_a_product () 
     {
         $this->withoutExceptionHandling();
         $this->signIn(['admin' => true]);
@@ -67,5 +67,15 @@ class CrudProductTest extends TestCase
         $updatedProduct = Product::find($product->id); 
         $this->assertDatabaseHas('products', ['name' => $updatedProduct->name]);
         $this->assertNotEquals($product->name, $updatedProduct->name);
+    }
+
+    /** @test */
+    public function only_admins_can_delete_a_product () 
+    {
+        $this->withoutExceptionHandling();
+        $this->signIn(['admin' => true]);
+        $product = Product::factory()->create();
+        $this->delete($product->path())->assertRedirect('/products');
+        $this->assertDatabaseMissing('products', $product->toArray());
     }
 }

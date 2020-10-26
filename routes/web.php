@@ -28,5 +28,6 @@ Route::post('/products', [App\Http\Controllers\ProductsController::class, 'store
 Route::get('/products/{product}', [App\Http\Controllers\ProductsController::class, 'show'])->name('product.show');
 Route::get('/products/{product}/edit', [App\Http\Controllers\ProductsController::class, 'edit'])->name('product.edit')->middleware('admin');
 Route::patch('/products/{product}', [App\Http\Controllers\ProductsController::class, 'update'])->name('product.update')->middleware('admin');
+Route::delete('/products/{product}', [App\Http\Controllers\ProductsController::class, 'destroy'])->name('product.delete')->middleware('admin');
 
 Route::get('/users/admin/dashboard', [App\Http\Controllers\AdminDashboardController::class, 'index'])->name('admin.index');
