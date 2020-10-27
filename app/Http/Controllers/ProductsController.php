@@ -19,7 +19,6 @@ class ProductsController extends Controller
     {
         $products = Product::all();
         return view('products.index')->with('products', $products);
-        /* return response()->json(['products' => $products]); */
     }
 
     /**
@@ -43,7 +42,6 @@ class ProductsController extends Controller
         $validateRequest = $this->requestValidate();
         $imageName = request()->file('image')->getClientOriginalName();
         $this->uploadImage($request, $imageName);
-        /*  $request->file('image')->storeAs('images', $imageName, 'public'); */
         $validateRequest['image'] = $imageName;
         $product = Product::create($validateRequest);
         return redirect($product->path());
@@ -102,7 +100,9 @@ class ProductsController extends Controller
      */
     public function destroy(Product $product)
     {
+        Storage::delete('/public/images/' . $product->image);
         $product->delete();
+        
         return redirect('/products');
     }
 
