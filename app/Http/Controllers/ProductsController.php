@@ -19,6 +19,7 @@ class ProductsController extends Controller
     {
         $products = Product::all();
         return view('products.index')->with('products', $products);
+        /* return response()->json(['products' => $products]); */
     }
 
     /**
