@@ -17,7 +17,6 @@
             </div>
 
             <div class="w-full p-6">
-                <example-component></example-component>
                 <p class="text-gray-700">
                     You are logged in!
                 </p>
