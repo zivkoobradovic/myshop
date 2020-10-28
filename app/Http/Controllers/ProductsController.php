@@ -19,7 +19,7 @@ class ProductsController extends Controller
     public function index()
     {
         if (request()->has('category')) {
-            $category = Category::find(request('category'));
+            $category = Category::where('name', "=", request('category'))->get()->first();
             $products = $category->products;
         } else {
             $products = Product::all();
