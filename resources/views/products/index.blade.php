@@ -2,7 +2,10 @@
 
 @section('content')
 <section class="text-gray-700 body-font">
-    <div class="container px-5 py-24 mx-auto">
+    <div class="flex">
+        <div class="md:w-1/4"><h1>sidebar</h1></div>
+    </div>
+    <div class="container px-5 py-24 mx-auto md:w-3/4">
         <div class="flex flex-wrap -m-4">
             {{-- <div class="flex flex-wrap w-full mb-20">
                 <div class="lg:w-1/2 w-full mb-6 lg:mb-0">
@@ -13,33 +16,30 @@
                  </div> --}}
 
             @foreach($products as $product)
-                <div class="xl:w-1/4 md:w-1/2 p-4 hover:shadow-lg">
-                    <div class="bg-gray-100 rounded-lg relative">
-                        <div class="relative">
-                            <a href="">
-                                <span
-                                    class="absolute mt-5 ml-5 p-2 bg-red-500 rounded text-white bold">{{ $product->badge }}</span>
-                                <img class="rounded w-full object-cover object-center mb-6"
-                                    src="{{ asset('storage/images/'.$product->image) }}"
-                                    alt="content" />
-                            </a>
-                        </div>
-                        <h3 class="text-teal-500 text-xs font-medium title-font"></h3>
-                        <h2 class="text-lg text-gray-900 font-medium title-font mb-4">
-                            {{ $product->name }}
-                        </h2>
+                <div class="lg:w-1/4 md:w-1/2 p-4 w-full hover:shadow-2xl">
+                    <a class="block relative h-60 rounded overflow-hidden">
+                        <span
+                            class="absolute mt-5 ml-5 p-2 bg-red-500 rounded text-white bold">{{ $product->badge }}</span>
+                        <img alt="ecommerce" class="object-cover object-center w-full h-full block"
+                            src={{ asset('storage/images/'.$product->image) }}>
+                    </a>
+                    <div class="mt-4">
+                        <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">CATEGORY</h3>
+                        <h2 class="text-gray-900 title-font text-lg font-medium"> {{ $product->name }}</h2>
+                        <p class="mt-1">{{ $product->presentPrice() }}</p>
                         <p class="mb-8 leading-relaxed text-base">
                             {{ $product->short_description }}
                         </p>
-                        <div class="mb-3">
-                            <a class="tracking-widest p-5 w-10 rounded bg-orange-300" href="">View Details</a>
-                            @auth
-                                @if(auth()->user()->admin)
-                                    <a class="p-5 w-10 rounded bg-green-300"
-                                        href="{{ route('product.edit', ['product' => $product]) }}">Edit</a>
-                                @endif
-                            @endauth
-                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <a class="tracking-widest p-5 w-10 rounded bg-orange-300"
+                            href="{{ $product->path() }}">View Details</a>
+                        @auth
+                            @if(auth()->user()->admin)
+                                <a class="p-5 w-10 rounded bg-green-300"
+                                    href="{{ route('product.edit', ['product' => $product]) }}">Edit</a>
+                            @endif
+                        @endauth
                     </div>
                 </div>
             @endforeach
