@@ -30,4 +30,9 @@ abstract class TestCase extends BaseTestCase
         $image = UploadedFile::fake()->image('avatar.jpg');
         return $image;
     }
+
+    public function category () {
+        $category = \App\Models\Category::factory()->create();
+        return $category;
+    }
 }

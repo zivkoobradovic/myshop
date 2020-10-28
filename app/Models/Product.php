@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Category;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -11,9 +12,9 @@ class Product extends Model
 
   protected $guarded = [];
 
-    public function stores () {
-      return $this->belongsTo('App\Models\Store');  
-    }
+  public function categories () {
+    return $this->belongsToMany(Category::class);  
+  }
 
     public function path () {
       return '/products/' . $this->id;  

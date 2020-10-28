@@ -44,6 +44,7 @@ class ProductsController extends Controller
         $this->uploadImage($request, $imageName);
         $validateRequest['image'] = $imageName;
         $product = Product::create($validateRequest);
+        $this->addCategories($product, $request->categories);
         return redirect($product->path());
     }
 
@@ -112,16 +113,19 @@ class ProductsController extends Controller
             'name' => 'required',
             'sku' => 'required',
             'badge' => 'required',
-            'store_id' => 'required',
             'price' => 'required',
             'in_stock' => 'required',
             'short_description' => 'required',
             'long_description' => 'required',
-            'image' => 'required|sometimes'
+            'image' => 'required|sometimes',
         ]);
     }
     public function uploadImage($request, $imageName)
     {
         $request->file('image')->storeAs('images', $imageName, 'public');
+    }
+
+    public function addCategories ($product, $categories) {
+        $product->categories()->attach($categories);
     }
 }

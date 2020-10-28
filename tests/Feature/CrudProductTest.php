@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Models\Category;
 use Tests\TestCase;
 use App\Models\Product;
 use Illuminate\Http\UploadedFile;
@@ -17,11 +18,10 @@ class CrudProductTest extends TestCase
     {
         $this->withoutExceptionHandling();
         $this->signIn(['admin' => true]);
-        
-        $product =[
-            'id' => random_int(1,100),
-            'store_id' => 1,
-            'sku' => random_int(1,100),
+
+        $product = [
+            'id' => random_int(1, 100),
+            'sku' => random_int(1, 100),
             'name' => 'word',
             'price' => 1234,
             'short_description' => 'short',
@@ -36,27 +36,17 @@ class CrudProductTest extends TestCase
         $response->assertRedirect($productDb->path());
     }
 
-    /** @test */
-    public function only_admins_can_edit_product () 
-    {
-        $this->withoutExceptionHandling();
-        $this->signIn(['admin' => true]);
-        $product = $this->product();
-        $this->get($product->path() . '/edit')
-            ->assertSee($product->name);
-    }
 
     /** @test */
-    public function only_admins_can_update_a_product () 
+    public function only_admins_can_update_a_product()
     {
         $this->withoutExceptionHandling();
         $this->signIn(['admin' => true]);
         $product = Product::factory()->create();
-        $response = $this->patch('/products/'. $product->id, [
+        $response = $this->patch('/products/' . $product->id, [
             'name' => 'Changed',
             'sku' => $product->sku,
             'badge' => $product->badge,
-            'store_id' => $product->store_id,
             'price' => $product->price,
             'in_stock' => $product->in_stock,
             'short_description' => $product->short_description,
@@ -64,18 +54,34 @@ class CrudProductTest extends TestCase
             'image' => $this->fakeImage()
         ]);
         $response->assertRedirect(route('product.show', ['product' => $product->id]));
-        $updatedProduct = Product::find($product->id); 
+        $updatedProduct = Product::find($product->id);
         $this->assertDatabaseHas('products', ['name' => $updatedProduct->name]);
         $this->assertNotEquals($product->name, $updatedProduct->name);
     }
 
     /** @test */
-    public function only_admins_can_delete_a_product () 
+    public function only_admins_can_delete_a_product()
     {
         $this->withoutExceptionHandling();
         $this->signIn(['admin' => true]);
         $product = Product::factory()->create();
         $this->delete($product->path())->assertRedirect('/products');
         $this->assertDatabaseMissing('products', $product->toArray());
+    }
+
+    /** @test */
+    public function a_product_has_categories()
+    {
+        $product = $this->product();
+        $categories = Category::factory()->count(5)->create()->pluck('id');
+        $product->categories()->attach([
+            '1',
+            '2',
+            '3'
+        ]);
+        $this->assertDatabaseHas('category_product', [
+            'category_id' => 2,
+            'product_id' => $product->id
+        ]);
     }
 }

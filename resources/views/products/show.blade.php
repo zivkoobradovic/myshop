@@ -2,10 +2,8 @@
 
 @section('content')
 <section class="text-gray-700 body-font overflow-hidden">
-    <div class="md:flex">
-        <div class="md:w-1/4">
-            <h1>sidebar</h1>
-        </div>
+  <div class="md:flex">
+        @include('partials.sidebar')
         <div class="container px-5 py-24 mx-auto md:w-3/4">
             <div class="lg:w-4/5 mx-auto flex flex-wrap">
                 @if($product->image)

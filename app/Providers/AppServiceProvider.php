@@ -2,7 +2,7 @@
 
 namespace App\Providers;
 
-use App\Models\Store;
+use App\Models\Category;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
@@ -26,7 +26,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         View::composer(['products.create', 'products.edit'], function ($view) {
-            $view->with('stores', Store::all());
+            $view->with('categories', Category::all());
         });
     }
 }

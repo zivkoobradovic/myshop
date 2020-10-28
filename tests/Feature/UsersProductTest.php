@@ -30,6 +30,12 @@ class UsersProductTest extends TestCase
             ->assertSee($product->name);
     }
 
+     /** @test */
+     public function anonymous_user_cannot_view_create_new_product_page()
+     {
+         $this->get('/products/create')->assertRedirect('/login');
+     }
+
     /** @test */
     public function only_admin_can_view_create_new_product_page()
     {
@@ -55,8 +61,12 @@ class UsersProductTest extends TestCase
     }
 
     /** @test */
-    public function anonymous_user_cannot_view_create_new_product_page()
+    public function only_admin_can_view_edit_product_page () 
     {
-        $this->get('/products/create')->assertRedirect('/login');
+        $this->withoutExceptionHandling();
+        $this->signIn(['admin' => true]);
+        $product = $this->product();
+        $this->get($product->path() . '/edit')
+            ->assertSee($product->name);
     }
 }

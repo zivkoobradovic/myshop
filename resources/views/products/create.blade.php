@@ -27,12 +27,15 @@
                     placeholder="Product Name" type="text" name="name">
             </div>
             <div class="md:mr-5">
+                <div class="mb-3">
+                    <label for="categories">Select Category</label>
+                </div>
+               
                 <select
                     class="w-full bg-white rounded border border-gray-400 focus:outline-none focus:border-teal-500 text-base px-4 py-2 mb-4"
-                    placeholder="Product Name" type="text" name="store_id">
-                    <option value="" selected>Select Store</option>
-                    @foreach($stores as $store)
-                        <option value="{{ $store->id }}">{{ $store->name }}</option>
+                    placeholder="Product Name" type="text" name="categories[]" multiple id="categories">
+                    @foreach($categories as $category)
+                        <option value="{{ $category->id }}">{{ $category->name }}</option>
                     @endforeach
                 </select>
             </div>
