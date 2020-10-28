@@ -11,6 +11,7 @@
                  </div>
                  <p class="lg:w-1/2 w-full leading-relaxed text-base">Whatever cardigan tote bag tumblr hexagon brooklyn asymmetrical gentrify, subway tile poke farm-to-table. Franzen you probably haven't heard of them man bun deep jianbing selfies heirloom prism food truck ugh squid celiac humblebrag.</p>
                  </div> --}}
+
             @foreach($products as $product)
                 <div class="xl:w-1/4 md:w-1/2 p-4 hover:shadow-lg">
                     <div class="bg-gray-100 rounded-lg relative">
@@ -18,7 +19,9 @@
                             <a href="">
                                 <span
                                     class="absolute mt-5 ml-5 p-2 bg-red-500 rounded text-white bold">{{ $product->badge }}</span>
-                                <img class="rounded w-full object-cover object-center mb-6" src="{{asset('storage/images/'.$product->image)}}" alt="content" />
+                                <img class="rounded w-full object-cover object-center mb-6"
+                                    src="{{ asset('storage/images/'.$product->image) }}"
+                                    alt="content" />
                             </a>
                         </div>
                         <h3 class="text-teal-500 text-xs font-medium title-font"></h3>

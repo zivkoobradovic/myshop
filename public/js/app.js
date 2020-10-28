@@ -1912,34 +1912,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  mounted: function mounted() {}
+  props: ["products"],
+  mounted: function mounted() {},
+  methods: {}
 });
 
 /***/ }),
@@ -33106,53 +33082,9 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", [_vm._v(_vm._s(_vm.products))])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "xl:w-1/4 md:w-1/2 p-4 hover:shadow-lg" }, [
-      _c("div", { staticClass: "bg-gray-100 rounded-lg relative" }, [
-        _c("div", { staticClass: "relative" }, [
-          _c("a", { attrs: { href: "" } }, [
-            _c("span", {
-              staticClass:
-                "absolute mt-5 ml-5 p-2 bg-red-500 rounded text-white bold"
-            }),
-            _vm._v(" "),
-            _c("img", {
-              staticClass: "rounded w-full object-cover object-center mb-6",
-              attrs: { src: "", alt: "content" }
-            })
-          ])
-        ]),
-        _vm._v(" "),
-        _c("h3", {
-          staticClass: "text-teal-500 text-xs font-medium title-font"
-        }),
-        _vm._v(" "),
-        _c("h2", {
-          staticClass: "text-lg text-gray-900 font-medium title-font mb-4"
-        }),
-        _vm._v(" "),
-        _c("p", { staticClass: "mb-8 leading-relaxed text-base" }),
-        _vm._v(" "),
-        _c("div", { staticClass: "mb-3" }, [
-          _c(
-            "a",
-            {
-              staticClass: "tracking-widest p-5 w-10 rounded bg-orange-300",
-              attrs: { href: "" }
-            },
-            [_vm._v("View\n                              Details")]
-          )
-        ])
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
