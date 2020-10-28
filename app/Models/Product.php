@@ -18,4 +18,8 @@ class Product extends Model
     public function path () {
       return '/products/' . $this->id;  
     }
+
+    public function presentPrice () {
+     return 'RSD ' . number_format($this->price, 2, ',', '.');
+    }
 }
