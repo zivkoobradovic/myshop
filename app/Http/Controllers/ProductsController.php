@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -17,7 +18,12 @@ class ProductsController extends Controller
      */
     public function index()
     {
-        $products = Product::all();
+        if (request()->has('category')) {
+            $category = Category::find(request('category'));
+            $products = $category->products;
+        } else {
+            $products = Product::all();
+        }
         return view('products.index')->with('products', $products);
     }
 
@@ -85,7 +91,7 @@ class ProductsController extends Controller
             $imageName = $attributes['image']->getClientOriginalName();
             if ($product->image != $imageName) {
                 $this->uploadImage($request, $imageName);
-               Storage::delete('/public/images/' . $product->image);
+                Storage::delete('/public/images/' . $product->image);
                 $attributes['image'] = $imageName;
             }
         }
@@ -103,7 +109,7 @@ class ProductsController extends Controller
     {
         Storage::delete('/public/images/' . $product->image);
         $product->delete();
-        
+
         return redirect('/products');
     }
 
@@ -125,7 +131,8 @@ class ProductsController extends Controller
         $request->file('image')->storeAs('images', $imageName, 'public');
     }
 
-    public function addCategories ($product, $categories) {
+    public function addCategories($product, $categories)
+    {
         $product->categories()->attach($categories);
     }
 }

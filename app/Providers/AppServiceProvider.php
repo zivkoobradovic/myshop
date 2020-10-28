@@ -28,5 +28,8 @@ class AppServiceProvider extends ServiceProvider
         View::composer(['products.create', 'products.edit'], function ($view) {
             $view->with('categories', Category::all());
         });
+        View::composer(['partials.sidebar'], function ($view) {
+            $view->with('categories', Category::all());
+        });
     }
 }
