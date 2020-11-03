@@ -58,7 +58,7 @@ class CategoriesController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+        return view('categories.edit')->with(['category' => $category]);
     }
 
     /**
@@ -70,7 +70,8 @@ class CategoriesController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        //
+        $category->update($this->validateRequest());
+        return redirect($category->path() . '/edit');
     }
 
     /**

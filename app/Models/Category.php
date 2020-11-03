@@ -15,4 +15,8 @@ class Category extends Model
     public function products () {
       return $this->belongsToMany(Product::class)->withPivot('product_id');  
     }
+
+    public function path () {
+      return '/categories/' . $this->id;  
+    }
 }

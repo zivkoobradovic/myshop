@@ -19,7 +19,11 @@ class ProductsController extends Controller
      */
     public function index()
     {
+        $categories = Category::all();
         if (request()->has('category')) {
+            if (!$categories->contains('name', request('category'))) {
+                return back()->with('error', 'There\'s no \'' . request('category') . '\' Please try with deferent category name.');
+            }
             $products = $this->productsByCategoryName();
         } else {
             $products = Product::all();

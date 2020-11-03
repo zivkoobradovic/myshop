@@ -11,24 +11,40 @@ class ManageCategoryTest extends TestCase
     use RefreshDatabase;
 
     /** @test */
+    public function anonymous_user_cannot_view_create_new_category_page()
+    {
+        $this->get('/categories/create')->assertRedirect('/login');
+    }
+
+    /** @test */
+    public function only_admin_can_view_create_new_category_page()
+    {
+        $this->withoutExceptionHandling();
+        $this->signIn(['admin' => true]);
+        $this->get('/categories/create')->assertOk();
+    }
+
+    /** @test */
     public function admin_user_can_see_category_create_page()
     {
-        $this->signIn(['admin' => 1]);
+        $this->signIn(['admin' => true]);
         $this->get('/categories/create')->assertOk();
     }
 
     /** @test */
     public function non_admin_user_cannot_see_category_create_page()
     {
-        $this->signIn(['admin' => 0]);
+        $this->signIn(['admin' => false]);
         $this->get('/categories/create')->assertRedirect('/home');
     }
 
     /** @test */
-    public function admin_can_create_new_category () 
+    public function only_admin_can_view_edit_category_page()
     {
         $this->withoutExceptionHandling();
-        $this->signIn(['admin' => 1]);
-        $this->post('/categories', ['name' => 'new category'])->assertRedirect('/categories/create');
+        $this->signIn(['admin' => true]);
+        $category = $this->category();
+        $this->get($category->path() . '/edit')
+            ->assertSee($category->name);
     }
 }

@@ -32,6 +32,20 @@
                                         class="no-underline hover:underline text-gray-300 text-sm p-3">Home</a>
                                 @endif
                             @endauth
+                            @auth
+                                @if(auth()->user()->admin)
+                                    <a href="/products"
+                                        class="no-underline hover:underline text-gray-300 text-sm p-3">Products</a>
+                                    <a href="/products/create"
+                                        class="no-underline hover:underline text-gray-300 text-sm p-3">Create
+                                        Product</a>
+                                    <a href="/categories/create"
+                                        class="no-underline hover:underline text-gray-300 text-sm p-3">Create
+                                        Category</a>
+                                @endif
+                            @endauth
+                            <a href="/products"
+                                class="no-underline hover:underline text-gray-300 text-sm p-3">Products</a>
                         </div>
                         <div class="flex-1 text-right">
                             @guest

@@ -8,15 +8,24 @@ use Tests\TestCase;
 
 class CrudCategoryTest extends TestCase
 {
-    /**
-     * A basic feature test example.
-     *
-     * @return void
-     */
-    public function testExample()
+    use RefreshDatabase;
+    /** @test */
+    public function admin_can_create_new_category()
     {
-        $response = $this->get('/');
+        $this->withoutExceptionHandling();
+        $this->signIn(['admin' => true]);
+        $this->post('/categories', ['name' => 'new category'])->assertRedirect('/categories/create');
+    }
 
-        $response->assertStatus(200);
+    /** @test */
+    public function admin_can_update_category()
+    {
+        $this->withoutExceptionHandling();
+        $this->signIn(['admin' => true]);
+        $category = $this->category();
+        $newCategoryName = 'new category';
+        $this->patch('/categories/' . $category->id, ['name' => $newCategoryName])->assertRedirect($category->path() . '/edit');
+        $this->assertDatabaseHas('categories', ['name' => $newCategoryName]);
+        $this->get($category->path() . '/edit')->assertSee($newCategoryName);
     }
 }

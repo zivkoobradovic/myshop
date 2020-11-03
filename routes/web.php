@@ -31,6 +31,8 @@ Route::get('/products/{product}/edit', [App\Http\Controllers\ProductsController:
 Route::patch('/products/{product}', [App\Http\Controllers\ProductsController::class, 'update'])->name('product.update')->middleware('admin');
 Route::delete('/products/{product}', [App\Http\Controllers\ProductsController::class, 'destroy'])->name('product.delete')->middleware('admin');
 
-Route::get('categories/create', [App\Http\Controllers\CategoriesController::class, 'create'])->middleware('admin')->name('category.create');
-Route::post('categories', [App\Http\Controllers\CategoriesController::class, 'store'])->middleware('admin')->name('category.store');
+Route::get('categories/create', [App\Http\Controllers\CategoriesController::class, 'create'])->name('category.create')->middleware('admin');
+Route::post('/categories', [App\Http\Controllers\CategoriesController::class, 'store'])->name('category.store')->middleware('admin');
+Route::get('/categories/{category}/edit', [App\Http\Controllers\CategoriesController::class, 'edit'])->name('category.edit')->middleware('admin');
+Route::patch('/categories/{category}', [App\Http\Controllers\CategoriesController::class, 'update'])->name('category.update')->middleware('admin');
 

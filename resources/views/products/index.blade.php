@@ -2,8 +2,12 @@
 
 @section('content')
 <section class="text-gray-700 body-font">
+    @if(session('error'))
+        <div class="mb-5 rounded p-3 bg-red-400 text-white text-bold w-full">
+            <p class="mb-2"><b>{{ session('error') }}</b></p>
+        </div>
+    @endif
     <div class="md:flex">
-
         @include('partials.sidebar')
         <div class="container px-5 py-24 mx-auto md:w-3/4">
             <div class="flex flex-wrap -m-4">
