@@ -21,7 +21,7 @@
 
                 @foreach($products as $product)
                     <div class="lg:w-1/4 md:w-1/2 p-4 w-full hover:shadow-2xl">
-                        <a class="block relative h-60 rounded overflow-hidden">
+                    <a href="{{ $product->path() }}" class="block relative h-60 rounded overflow-hidden">
                             <span
                                 class="absolute mt-5 ml-5 p-2 bg-red-500 rounded text-white bold">{{ $product->badge }}</span>
                             <img alt="ecommerce" class="object-cover object-center w-full h-full block"
