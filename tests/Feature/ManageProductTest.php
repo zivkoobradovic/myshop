@@ -5,7 +5,7 @@ namespace Tests\Feature;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
-class UsersProductTest extends TestCase
+class ManageProductTest extends TestCase
 {
     use RefreshDatabase;
     /** @test */
@@ -30,11 +30,11 @@ class UsersProductTest extends TestCase
             ->assertSee($product->name);
     }
 
-     /** @test */
-     public function anonymous_user_cannot_view_create_new_product_page()
-     {
-         $this->get('/products/create')->assertRedirect('/login');
-     }
+    /** @test */
+    public function anonymous_user_cannot_view_create_new_product_page()
+    {
+        $this->get('/products/create')->assertRedirect('/login');
+    }
 
     /** @test */
     public function only_admin_can_view_create_new_product_page()
@@ -49,7 +49,7 @@ class UsersProductTest extends TestCase
     {
         $this->withoutExceptionHandling();
         $user = $this->signIn(['admin' => true]);
-        $this->get('/users/admin/dashboard')->assertSee($user->name);
+        $this->get('/admin/dashboard')->assertSee($user->name);
     }
 
 
@@ -61,12 +61,31 @@ class UsersProductTest extends TestCase
     }
 
     /** @test */
-    public function only_admin_can_view_edit_product_page () 
+    public function only_admin_can_view_edit_product_page()
     {
         $this->withoutExceptionHandling();
         $this->signIn(['admin' => true]);
         $product = $this->product();
         $this->get($product->path() . '/edit')
+            ->assertSee($product->name);
+    }
+
+    /** @test */
+    public function products_can_be_filtered_by_category_name()
+    {
+        $category = $this->category();
+
+        $firstProduct = $this->product();
+
+        $product = \App\Models\Product::factory()->create(['name' => 'Pingvin']);
+        $product->categories()->attach($category->id);
+
+        $this->assertDatabaseHas('category_product', [
+            'category_id' => $category->id,
+            'product_id' => $product->id
+        ]);
+
+        $this->get('/products?category=' . $category->name)
             ->assertSee($product->name);
     }
 }

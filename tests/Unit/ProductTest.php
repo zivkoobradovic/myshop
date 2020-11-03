@@ -15,4 +15,19 @@ class ProductTest extends TestCase
         $product = $this->product();
         $this->assertEquals('/products/' . $product->id, $product->path());
     }
+
+    /** @test */
+    public function a_product_has_categories()
+    {
+        $product = $this->product();
+        $product->categories()->attach([
+            '1',
+            '2',
+            '3'
+        ]);
+        $this->assertDatabaseHas('category_product', [
+            'category_id' => 2,
+            'product_id' => $product->id
+        ]);
+    }
 }

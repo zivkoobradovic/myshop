@@ -68,20 +68,4 @@ class CrudProductTest extends TestCase
         $this->delete($product->path())->assertRedirect('/products');
         $this->assertDatabaseMissing('products', $product->toArray());
     }
-
-    /** @test */
-    public function a_product_has_categories()
-    {
-        $product = $this->product();
-        $categories = Category::factory()->count(5)->create()->pluck('id');
-        $product->categories()->attach([
-            '1',
-            '2',
-            '3'
-        ]);
-        $this->assertDatabaseHas('category_product', [
-            'category_id' => 2,
-            'product_id' => $product->id
-        ]);
-    }
 }

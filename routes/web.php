@@ -20,6 +20,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/admin/dashboard', [ App\Http\Controllers\AdminDashboardController::class, 'index'])->name('admin.dashboard');
 
 
 Route::get('/products', [App\Http\Controllers\ProductsController::class, 'index'])->name('products.index');
@@ -30,4 +31,3 @@ Route::get('/products/{product}/edit', [App\Http\Controllers\ProductsController:
 Route::patch('/products/{product}', [App\Http\Controllers\ProductsController::class, 'update'])->name('product.update')->middleware('admin');
 Route::delete('/products/{product}', [App\Http\Controllers\ProductsController::class, 'destroy'])->name('product.delete')->middleware('admin');
 
-Route::get('/users/admin/dashboard', [App\Http\Controllers\AdminDashboardController::class, 'index'])->name('admin.index');

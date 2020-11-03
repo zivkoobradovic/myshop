@@ -13,7 +13,7 @@ class Product extends Model
   protected $guarded = [];
 
   public function categories () {
-    return $this->belongsToMany(Category::class);  
+    return $this->belongsToMany(Category::class)->withPivot('category_id');  
   }
 
     public function path () {

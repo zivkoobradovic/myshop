@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
 
@@ -19,8 +20,7 @@ class ProductsController extends Controller
     public function index()
     {
         if (request()->has('category')) {
-            $category = Category::where('name', "=", request('category'))->get()->first();
-            $products = $category->products;
+            $products = $this->productsByCategoryName();
         } else {
             $products = Product::all();
         }
@@ -96,6 +96,8 @@ class ProductsController extends Controller
             }
         }
         $product->update($attributes);
+        $product->categories()->detach();
+        $product->categories()->attach(request('categories'));
         return redirect($product->path());
     }
 
@@ -134,5 +136,11 @@ class ProductsController extends Controller
     public function addCategories($product, $categories)
     {
         $product->categories()->attach($categories);
+    }
+
+    public function productsByCategoryName()
+    {
+        $category = Category::where('name', request('category'))->first();
+        return $category->products;
     }
 }
