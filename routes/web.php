@@ -31,3 +31,6 @@ Route::get('/products/{product}/edit', [App\Http\Controllers\ProductsController:
 Route::patch('/products/{product}', [App\Http\Controllers\ProductsController::class, 'update'])->name('product.update')->middleware('admin');
 Route::delete('/products/{product}', [App\Http\Controllers\ProductsController::class, 'destroy'])->name('product.delete')->middleware('admin');
 
+Route::get('categories/create', [App\Http\Controllers\CategoriesController::class, 'create'])->middleware('admin')->name('category.create');
+Route::post('categories', [App\Http\Controllers\CategoriesController::class, 'store'])->middleware('admin')->name('category.store');
+

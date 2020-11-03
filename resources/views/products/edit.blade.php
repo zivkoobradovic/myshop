@@ -32,22 +32,18 @@
                 <div class="md:mr-5">
                     <div class="mb-3">
                         <label class="text-2xl" for="categories">Edit Product Categories</label>
-                        <div>
-                            Product Categories:  
-                            @foreach($product->categories as $productCategory)
-                                <span class="text-small text-red-400">{{ $productCategory->name }}</span>
-                            @endforeach
-                        </div>
-
-
                     </div>
 
                     <select
-                        class="w-full bg-white rounded border border-gray-400 focus:outline-none focus:border-teal-500 text-base px-4 py-2 mb-4"
+                        class="h-56 w-full bg-white rounded border border-gray-400 focus:outline-none focus:border-teal-500 text-base px-4 py-2 mb-4"
                         placeholder="Product Name" type="text" name="categories[]" multiple id="categories">
-                        @foreach($categories as $category)
-                            <option value="{{ $category->id }}">{{ $category->name }}</option>
-                        @endforeach
+                        
+                        @foreach($product->categories as $productCategory)@endforeach
+                            @foreach($categories as $category)
+                                <option value="{{ $category->id }}"
+                                    {{ $product->categories->contains('name', $category->name) ? 'selected' : '' }}>
+                                    {{ $category->name }}</option>
+                            @endforeach
                     </select>
                 </div>
                 <div class="md:mr-5">

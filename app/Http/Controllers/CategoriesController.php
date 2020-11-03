@@ -24,7 +24,7 @@ class CategoriesController extends Controller
      */
     public function create()
     {
-        //
+        return view('categories.create');
     }
 
     /**
@@ -35,7 +35,8 @@ class CategoriesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $category = Category::create($this->validateRequest());
+        return redirect()->route('category.create')->with('success', 'Category ' . $category->name . ' successfuly created');
     }
 
     /**
@@ -81,5 +82,11 @@ class CategoriesController extends Controller
     public function destroy(Category $category)
     {
         //
+    }
+
+    public function validateRequest () {
+        return request()->validate([
+            'name' => 'required|max:50'
+        ]);
     }
 }

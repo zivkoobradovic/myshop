@@ -51,7 +51,7 @@ class ProductsController extends Controller
         $validateRequest['image'] = $imageName;
         $product = Product::create($validateRequest);
         $this->addCategories($product, $request->categories);
-        return redirect($product->path());
+        return redirect($product->path())->with('success', 'Product ' . $product->name . ' successfuly created');
     }
 
     /**

@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('content')
 <form class="text-gray-700 body-font py-24 px-24 bg-teal-200 rounded md:mt-20"
