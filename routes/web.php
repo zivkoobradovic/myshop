@@ -36,3 +36,5 @@ Route::post('/categories', [App\Http\Controllers\CategoriesController::class, 's
 Route::get('/categories/{category}/edit', [App\Http\Controllers\CategoriesController::class, 'edit'])->name('category.edit')->middleware('admin');
 Route::patch('/categories/{category}', [App\Http\Controllers\CategoriesController::class, 'update'])->name('category.update')->middleware('admin');
 
+
+Route::get('/cart', [App\Http\Controllers\CartController::class, 'show'])->name('show.cart');
