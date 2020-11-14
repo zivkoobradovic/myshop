@@ -128,6 +128,12 @@
                             </svg>
                         </button>
                     </div>
+                    <div>
+                        @foreach($product->categories as $category)
+                            <a class="hover:underline"
+                                href="/products?category={{ $category->name }}">{{ $category->name }}</a>
+                        @endforeach
+                    </div>
                 </div>
             </div>
         </div>
