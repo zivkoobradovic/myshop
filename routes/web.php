@@ -38,3 +38,4 @@ Route::patch('/categories/{category}', [App\Http\Controllers\CategoriesControlle
 
 
 Route::get('/cart', [App\Http\Controllers\CartController::class, 'show'])->name('show.cart');
+Route::get('/cart-add', [App\Http\Controllers\CartController::class, 'store'])->name('store.cart');

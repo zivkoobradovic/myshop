@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use Tests\TestCase;
+use App\Models\Product;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class ManageProductTest extends TestCase
@@ -88,4 +89,30 @@ class ManageProductTest extends TestCase
         $this->get('/products?category=' . $category->name)
             ->assertSee($product->name);
     }
+    /** @test */
+    public function user_can_see_might_also_like_products_on_show_product_page()
+    {
+        $products = Product::factory()->count(5)->create();
+        $product = $products[0];
+        $mightAlsoLike = $product->mightAlsoLike();
+        $this->get($product->path())
+            ->assertSee($mightAlsoLike[0]->name)
+            ->assertSee($mightAlsoLike[1]->name)
+            ->assertSee($mightAlsoLike[2]->name)
+            ->assertSee($mightAlsoLike[3]->name);
+    }
+
+    /** @test */
+    /* public function user_can_see_might_also_like_products_on_cart_page()
+    {
+        $this->withoutExceptionHandling();
+        $products = Product::factory()->count(5)->create();
+        $product = $products[0];
+        $mightAlsoLike = $product->mightAlsoLike();
+        $this->get('/cart')
+            ->assertSee($mightAlsoLike[0]->name)
+            ->assertSee($mightAlsoLike[1]->name)
+            ->assertSee($mightAlsoLike[2]->name)
+            ->assertSee($mightAlsoLike[3]->name);
+    } */
 }

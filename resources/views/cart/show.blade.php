@@ -41,7 +41,7 @@
               </div>
             </div>
         </div>
-
     </div>
+   {{--  @include('partials.might-also-like') --}}
 </section>
 @endsection

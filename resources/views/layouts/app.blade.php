@@ -48,6 +48,8 @@
                                 class="no-underline hover:underline text-gray-300 text-sm p-3">Products</a>
                         </div>
                         <div class="flex-1 text-right">
+                            <a class="no-underline hover:underline text-gray-300 text-sm p-3"
+                                    href="{{ route('show.cart') }}">Cart</a>
                             @guest
                                 <a class="no-underline hover:underline text-gray-300 text-sm p-3"
                                     href="{{ route('login') }}">{{ __('Login') }}</a>

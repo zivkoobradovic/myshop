@@ -7,7 +7,7 @@
             <p class="mb-2">{{ session('success') }}</p>
         </div>
     @endif
-    <div class="md:flex">
+    <div class="md:flex md:mb-10">
         @include('partials.sidebar')
         <div class="container px-5 py-24 mx-auto md:w-3/4">
             <div class="lg:w-4/5 mx-auto flex flex-wrap">
@@ -138,6 +138,9 @@
             </div>
         </div>
     </div>
-
+    <div class="text-3xl text-center text-gray-900 mb-5">
+        You Might Also Like
+    </div>
+    @include('partials.might-also-like')
 </section>
 @endsection

@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Category;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -22,5 +23,9 @@ class Product extends Model
 
     public function presentPrice () {
      return 'RSD ' . number_format($this->price, 2, ',', '.');
+    }
+
+    public function mightAlsoLike () {
+      return Product::where('id', '!=', $this->id)->inRandomOrder()->take(4)->get();
     }
 }

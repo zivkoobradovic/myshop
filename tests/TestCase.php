@@ -19,7 +19,7 @@ abstract class TestCase extends BaseTestCase
         return $user;
     }
 
-    public function product()
+    public function product($quantity = null)
     {
         $product = \App\Models\Product::factory()->create();
         return $product;

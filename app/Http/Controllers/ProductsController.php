@@ -66,6 +66,7 @@ class ProductsController extends Controller
      */
     public function show(Product $product)
     {
+        $product->mightAlsoLike();
         return view('products.show')->with('product', $product);
     }
 
