@@ -7,6 +7,15 @@
             <p class="mb-2">{{ session('success') }}</p>
         </div>
     @endif
+
+    @if($errors->any())
+        <ul class="mb-5 rounded p-3 bg-red-300 text-black text-bold">
+            @foreach($errors->all() as $error)
+                <li class="mb-2">{{ $error }}</li>
+            @endforeach
+        </ul>
+    @endif
+
     <div class="md:flex md:mb-10">
         @include('partials.sidebar')
         <div class="container px-5 py-24 mx-auto md:w-3/4">
@@ -115,9 +124,22 @@
                     <div class="flex">
                         <span
                             class="title-font font-medium text-2xl text-gray-900">{{ $product->presentPrice() }}</span>
-                        <button
-                            class="flex ml-auto text-white bg-teal-500 border-0 p-3 focus:outline-none hover:bg-teal-600 rounded">Add
-                            To Cart</button>
+
+
+                        <form action="{{ route('cart.add') }}" method="POST">
+                            @csrf
+                            <input type="hidden" name="id" value="{{ $product->id }}">
+                            <input type="hidden" name="name" value="{{ $product->name }}">
+                            <input type="hidden" name="price" value="{{ $product->price }}">
+                            <input type="hidden" name="qty" value="1">
+                            <button
+                                class="flex ml-auto text-white bg-teal-500 border-0 p-3 focus:outline-none hover:bg-teal-600 rounded">Add
+                                To Cart</button>
+                        </form>
+
+
+
+
                         <button
                             class="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
                             <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -128,6 +150,12 @@
                             </svg>
                         </button>
                     </div>
+
+
+
+
+
+
                     <div>
                         @foreach($product->categories as $category)
                             <a class="hover:underline"

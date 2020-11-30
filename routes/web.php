@@ -37,5 +37,5 @@ Route::get('/categories/{category}/edit', [App\Http\Controllers\CategoriesContro
 Route::patch('/categories/{category}', [App\Http\Controllers\CategoriesController::class, 'update'])->name('category.update')->middleware('admin');
 
 
-Route::get('/cart', [App\Http\Controllers\CartController::class, 'show'])->name('show.cart');
-Route::get('/cart-add', [App\Http\Controllers\CartController::class, 'store'])->name('store.cart');
+Route::get('/cart', [App\Http\Controllers\CartController::class, 'show'])->name('cart.show');
+Route::post('/cart', [App\Http\Controllers\CartController::class, 'addToCart'])->name('cart.add');

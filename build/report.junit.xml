@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="" tests="28" assertions="49" errors="0" warnings="0" failures="0" skipped="0" time="6.280807">
+    <testsuite name="Unit" tests="3" assertions="3" errors="0" warnings="0" failures="0" skipped="0" time="1.031941">
+      <testsuite name="CategoryTest" file="E:\wamp\www\myshop\tests\Unit\CategoryTest.php" tests="1" assertions="1" errors="0" warnings="0" failures="0" skipped="0" time="0.691058">
+        <testcase name="it_has_a_path" class="CategoryTest" classname="CategoryTest" file="E:\wamp\www\myshop\tests\Unit\CategoryTest.php" line="11" assertions="1" time="0.691058"/>
+      </testsuite>
+      <testsuite name="Tests\Unit\ProductTest" file="E:\wamp\www\myshop\tests\Unit\ProductTest.php" tests="2" assertions="2" errors="0" warnings="0" failures="0" skipped="0" time="0.340883">
+        <testcase name="it_has_a_path" class="Tests\Unit\ProductTest" classname="Tests.Unit.ProductTest" file="E:\wamp\www\myshop\tests\Unit\ProductTest.php" line="13" assertions="1" time="0.173065"/>
+        <testcase name="a_product_has_categories" class="Tests\Unit\ProductTest" classname="Tests.Unit.ProductTest" file="E:\wamp\www\myshop\tests\Unit\ProductTest.php" line="20" assertions="1" time="0.167818"/>
+      </testsuite>
+    </testsuite>
+    <testsuite name="Feature" tests="25" assertions="46" errors="0" warnings="0" failures="0" skipped="0" time="5.248865">
+      <testsuite name="Tests\Feature\CrudCategoryTest" file="E:\wamp\www\myshop\tests\Feature\CrudCategoryTest.php" tests="2" assertions="6" errors="0" warnings="0" failures="0" skipped="0" time="0.469606">
+        <testcase name="admin_can_create_new_category" class="Tests\Feature\CrudCategoryTest" classname="Tests.Feature.CrudCategoryTest" file="E:\wamp\www\myshop\tests\Feature\CrudCategoryTest.php" line="13" assertions="2" time="0.242173"/>
+        <testcase name="admin_can_update_category" class="Tests\Feature\CrudCategoryTest" classname="Tests.Feature.CrudCategoryTest" file="E:\wamp\www\myshop\tests\Feature\CrudCategoryTest.php" line="21" assertions="4" time="0.227433"/>
+      </testsuite>
+      <testsuite name="Tests\Feature\CrudProductTest" file="E:\wamp\www\myshop\tests\Feature\CrudProductTest.php" tests="3" assertions="10" errors="0" warnings="0" failures="0" skipped="0" time="0.691635">
+        <testcase name="only_admin_can_create_product" class="Tests\Feature\CrudProductTest" classname="Tests.Feature.CrudProductTest" file="E:\wamp\www\myshop\tests\Feature\CrudProductTest.php" line="17" assertions="3" time="0.261151"/>
+        <testcase name="only_admins_can_update_a_product" class="Tests\Feature\CrudProductTest" classname="Tests.Feature.CrudProductTest" file="E:\wamp\www\myshop\tests\Feature\CrudProductTest.php" line="41" assertions="4" time="0.225589"/>
+        <testcase name="only_admins_can_delete_a_product" class="Tests\Feature\CrudProductTest" classname="Tests.Feature.CrudProductTest" file="E:\wamp\www\myshop\tests\Feature\CrudProductTest.php" line="63" assertions="3" time="0.204896"/>
+      </testsuite>
+      <testsuite name="Tests\Feature\ManageCartTest" file="E:\wamp\www\myshop\tests\Feature\ManageCartTest.php" tests="2" assertions="2" errors="0" warnings="0" failures="0" skipped="0" time="0.380931">
+        <testcase name="user_can_see_cart_page" class="Tests\Feature\ManageCartTest" classname="Tests.Feature.ManageCartTest" file="E:\wamp\www\myshop\tests\Feature\ManageCartTest.php" line="15" assertions="1" time="0.174802"/>
+        <testcase name="user_can_add_product_to_a_cart" class="Tests\Feature\ManageCartTest" classname="Tests.Feature.ManageCartTest" file="E:\wamp\www\myshop\tests\Feature\ManageCartTest.php" line="22" assertions="1" time="0.206128"/>
+      </testsuite>
+      <testsuite name="Tests\Feature\ManageCategoryTest" file="E:\wamp\www\myshop\tests\Feature\ManageCategoryTest.php" tests="5" assertions="7" errors="0" warnings="0" failures="0" skipped="0" time="0.926057">
+        <testcase name="anonymous_user_cannot_view_create_new_category_page" class="Tests\Feature\ManageCategoryTest" classname="Tests.Feature.ManageCategoryTest" file="E:\wamp\www\myshop\tests\Feature\ManageCategoryTest.php" line="14" assertions="2" time="0.169901"/>
+        <testcase name="only_admin_can_view_create_new_category_page" class="Tests\Feature\ManageCategoryTest" classname="Tests.Feature.ManageCategoryTest" file="E:\wamp\www\myshop\tests\Feature\ManageCategoryTest.php" line="20" assertions="1" time="0.191831"/>
+        <testcase name="admin_user_can_see_category_create_page" class="Tests\Feature\ManageCategoryTest" classname="Tests.Feature.ManageCategoryTest" file="E:\wamp\www\myshop\tests\Feature\ManageCategoryTest.php" line="28" assertions="1" time="0.180319"/>
+        <testcase name="non_admin_user_cannot_see_category_create_page" class="Tests\Feature\ManageCategoryTest" classname="Tests.Feature.ManageCategoryTest" file="E:\wamp\www\myshop\tests\Feature\ManageCategoryTest.php" line="35" assertions="2" time="0.193035"/>
+        <testcase name="only_admin_can_view_edit_category_page" class="Tests\Feature\ManageCategoryTest" classname="Tests.Feature.ManageCategoryTest" file="E:\wamp\www\myshop\tests\Feature\ManageCategoryTest.php" line="42" assertions="1" time="0.190970"/>
+      </testsuite>
+      <testsuite name="Tests\Feature\ManageProductTest" file="E:\wamp\www\myshop\tests\Feature\ManageProductTest.php" tests="10" assertions="16" errors="0" warnings="0" failures="0" skipped="0" time="1.976599">
+        <testcase name="anonymous_user_can_see_product_products_index_page" class="Tests\Feature\ManageProductTest" classname="Tests.Feature.ManageProductTest" file="E:\wamp\www\myshop\tests\Feature\ManageProductTest.php" line="13" assertions="1" time="0.216883"/>
+        <testcase name="anonymous_user_can_see_products_on_products_index_page" class="Tests\Feature\ManageProductTest" classname="Tests.Feature.ManageProductTest" file="E:\wamp\www\myshop\tests\Feature\ManageProductTest.php" line="19" assertions="1" time="0.185872"/>
+        <testcase name="anonymous_user_can_see_product_on_product_page" class="Tests\Feature\ManageProductTest" classname="Tests.Feature.ManageProductTest" file="E:\wamp\www\myshop\tests\Feature\ManageProductTest.php" line="27" assertions="1" time="0.193316"/>
+        <testcase name="anonymous_user_cannot_view_create_new_product_page" class="Tests\Feature\ManageProductTest" classname="Tests.Feature.ManageProductTest" file="E:\wamp\www\myshop\tests\Feature\ManageProductTest.php" line="35" assertions="2" time="0.175758"/>
+        <testcase name="only_admin_can_view_create_new_product_page" class="Tests\Feature\ManageProductTest" classname="Tests.Feature.ManageProductTest" file="E:\wamp\www\myshop\tests\Feature\ManageProductTest.php" line="41" assertions="1" time="0.179199"/>
+        <testcase name="only_admins_can_view_admin_dashboard_page" class="Tests\Feature\ManageProductTest" classname="Tests.Feature.ManageProductTest" file="E:\wamp\www\myshop\tests\Feature\ManageProductTest.php" line="49" assertions="1" time="0.194157"/>
+        <testcase name="non_admin_user_cannot_view_create_new_product_page" class="Tests\Feature\ManageProductTest" classname="Tests.Feature.ManageProductTest" file="E:\wamp\www\myshop\tests\Feature\ManageProductTest.php" line="58" assertions="2" time="0.197803"/>
+        <testcase name="only_admin_can_view_edit_product_page" class="Tests\Feature\ManageProductTest" classname="Tests.Feature.ManageProductTest" file="E:\wamp\www\myshop\tests\Feature\ManageProductTest.php" line="65" assertions="1" time="0.192771"/>
+        <testcase name="products_can_be_filtered_by_category_name" class="Tests\Feature\ManageProductTest" classname="Tests.Feature.ManageProductTest" file="E:\wamp\www\myshop\tests\Feature\ManageProductTest.php" line="75" assertions="2" time="0.206636"/>
+        <testcase name="user_can_see_might_also_like_products_on_show_product_page" class="Tests\Feature\ManageProductTest" classname="Tests.Feature.ManageProductTest" file="E:\wamp\www\myshop\tests\Feature\ManageProductTest.php" line="93" assertions="4" time="0.234205"/>
+      </testsuite>
+      <testsuite name="Tests\Feature\ManageStoreTest" file="E:\wamp\www\myshop\tests\Feature\ManageStoreTest.php" tests="1" assertions="1" errors="0" warnings="0" failures="0" skipped="0" time="0.173438">
+        <testcase name="lala" class="Tests\Feature\ManageStoreTest" classname="Tests.Feature.ManageStoreTest" file="E:\wamp\www\myshop\tests\Feature\ManageStoreTest.php" line="14" assertions="1" time="0.173438"/>
+      </testsuite>
+      <testsuite name="Tests\Feature\ManageUserTest" file="E:\wamp\www\myshop\tests\Feature\ManageUserTest.php" tests="2" assertions="4" errors="0" warnings="0" failures="0" skipped="0" time="0.630600">
+        <testcase name="if_logged_user_is_admin_redirect_user_to_the_admin_dashboard" class="Tests\Feature\ManageUserTest" classname="Tests.Feature.ManageUserTest" file="E:\wamp\www\myshop\tests\Feature\ManageUserTest.php" line="15" assertions="2" time="0.329231"/>
+        <testcase name="if_logged_user_is_not_admin_redirect_user_to_the_homepage" class="Tests\Feature\ManageUserTest" classname="Tests.Feature.ManageUserTest" file="E:\wamp\www\myshop\tests\Feature\ManageUserTest.php" line="23" assertions="2" time="0.301369"/>
+      </testsuite>
+    </testsuite>
+  </testsuite>
+</testsuites>

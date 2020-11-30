@@ -48,8 +48,7 @@
                                 class="no-underline hover:underline text-gray-300 text-sm p-3">Products</a>
                         </div>
                         <div class="flex-1 text-right">
-                            <a class="no-underline hover:underline text-gray-300 text-sm p-3"
-                                    href="{{ route('show.cart') }}">Cart</a>
+
                             @guest
                                 <a class="no-underline hover:underline text-gray-300 text-sm p-3"
                                     href="{{ route('login') }}">{{ __('Login') }}</a>
@@ -78,6 +77,22 @@
                             @endguest
                         </div>
                     </div>
+                </div>
+                {{-- cart navigation --}}
+                <div class="container flex">
+                    <div class="ml-auto">
+                        <a class="no-underline hover:underline text-gray-300 text-sm p-3 flex"
+                        href="{{ route('cart.show') }}">
+                        <div class="mr-2">
+                            <img class="h-6 w-6" src="{{ asset('storage/images/carts.png') }}"
+                                alt="">
+                        </div>
+                        <div class="rounded-full bg-yellow-500 text-black h-5 w-5 text-center pt-1 pb-1">
+                            {{ Cart::content()->count() }}
+                        </div>
+                    </a>
+                    </div>
+                    
                 </div>
             </nav>
             <div class="container">
