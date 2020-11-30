@@ -81,14 +81,14 @@
                 {{-- cart navigation --}}
                 <div class="container flex">
                     <div class="ml-auto">
-                        <a class="no-underline hover:underline text-gray-300 text-sm p-3 flex"
+                        <a class="no-underline text-gray-300 text-sm p-3 flex"
                         href="{{ route('cart.show') }}">
                         <div class="mr-2">
                             <img class="h-6 w-6" src="{{ asset('storage/images/carts.png') }}"
                                 alt="">
                         </div>
-                        <div class="rounded-full bg-yellow-500 text-black h-5 w-5 text-center pt-1 pb-1">
-                            {{ Cart::content()->count() }}
+                        <div class="rounded-full bg-yellow-500 text-white h-6 w-6 text-center pt-1 pb-1">
+                            {{ Cart::count() }}
                         </div>
                     </a>
                     </div>

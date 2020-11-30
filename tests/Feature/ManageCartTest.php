@@ -30,5 +30,8 @@ class ManageCartTest extends TestCase
             'price' => $product->price,
             'weight' => 0
         ])->assertSessionHas('cart');
+        $this->assertEquals(1, Cart::count());
+        $cartItem = Cart::get(Cart::content()->first()->rowId);
+        $this->assertEquals($product->name, $cartItem->name);
     }
 }

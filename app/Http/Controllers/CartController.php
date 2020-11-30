@@ -21,6 +21,11 @@ class CartController extends Controller
     return back();
   }
 
+  public function removeItem ($item) {
+    Cart::remove($item);
+    return back();
+  }
+
 
   public function validateRequest()
   {

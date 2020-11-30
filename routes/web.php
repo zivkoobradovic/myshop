@@ -39,3 +39,5 @@ Route::patch('/categories/{category}', [App\Http\Controllers\CategoriesControlle
 
 Route::get('/cart', [App\Http\Controllers\CartController::class, 'show'])->name('cart.show');
 Route::post('/cart', [App\Http\Controllers\CartController::class, 'addToCart'])->name('cart.add');
+Route::post('/cart/remove-item/{item}', [App\Http\Controllers\CartController::class, 'removeItem'])->name('cart.removeItem');
+
